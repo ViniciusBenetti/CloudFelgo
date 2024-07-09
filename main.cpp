@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
   FelgoApplication felgo;
 
   // Use platform-specific fonts instead of Felgo's default font
-  felgo.setPreservePlatformFonts(true);
+  felgo.setPreservePlatformFonts(false);
 
   QQmlApplicationEngine engine;
   felgo.initialize(&engine);
