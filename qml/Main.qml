@@ -9,14 +9,12 @@ import QtMultimedia
 
 App {
 
-
-     SoundEffect{
-       source: "../assets/sounds/electric.wav"
-       id: beep
+      MediaPlayer{
+          audioOutput: AudioOutput {}
+          source: "../assets/sounds/popcorn.wav"
+          id: beep
           
-      }
-
-
+    }
 
 
     Storage {
@@ -73,6 +71,7 @@ App {
 
 
   Navigation {
+
     id: "navegacao"
     navigationMode: navigationModeTabs
 
@@ -119,7 +118,7 @@ App {
 
 
           }
-          ListView {
+      ListView {
         anchors.fill: parent
         model: ListModel {
             id: listModel
@@ -170,7 +169,6 @@ App {
 
       AppPage{
         title: "começar"
-
 
 
       AppMap {
@@ -596,6 +594,7 @@ App {
 
     }
     AppButton {
+      
       text: "iniciar"
       id: iniciarRep
       anchors.bottom: parent.bottom
@@ -635,8 +634,7 @@ App {
       
     }
     }
-
-      
+     
     }
     NavigationItem {
       title: "treinamentos"
@@ -779,7 +777,7 @@ Popup {
         anchors.bottomMargin: dp(50)
         Column {
             anchors.top: parent.top
-            anchors.topMargin: dp(50)
+            anchors.topMargin: dp(20)
             width: parent.width
 
             Repeater {
@@ -877,11 +875,12 @@ Popup {
             
         }
     }
-}
+}   
     AppListView {
       id: listaEx
       anchors.top: retangulo2.bottom 
       width: retangulo2.width
+      anchors.bottom: parent.bottom
       model: ListModel {}
       Component.onCompleted:{
             try{
