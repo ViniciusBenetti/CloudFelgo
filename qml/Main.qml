@@ -126,29 +126,30 @@ App {
 
         delegate: Item {
             width: parent.width
-            height: 150
+            height: 200
 
             Rectangle {
                 width: parent.width
-                height: 150
+                height: 200
                 color: "black"
 
                 Text {
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: "data: "+model.title
                     color: "gray"
-                    font: robotoBold.font
+                    font.family: robotoBold.font
+                    font.pixelSize: 28
                 }
 
                 Text {
                     anchors.verticalCenter: parent.verticalCenter 
                     anchors.verticalCenterOffset: 5
-
                     text: model.body
-
-                    font: robotoBold.font
+                    font.family: robotoBold.font
+                    font.pixelSize: 20
                     color: "gray"
                 }
+              
                 Rectangle{
                   width: parent.width 
                   height: 0.5
@@ -156,6 +157,15 @@ App {
                   anchors.bottom: parent.bottom
                 }
             }
+        }IconButton {
+          iconType: IconType.trash
+          onClicked:{
+            storage.clearValue("horarios-inicio")
+            storage.clearValue("horarios-fim")
+            storage.clearValue("distancias")
+            storage.clearValue("datas-corrida")
+            listModel.clear()
+          }
         }
     }
         }
@@ -715,6 +725,7 @@ App {
         height: dp(50)
         anchors.topMargin: dp(160)
         radius: dp(20)
+        fontFamily: robotoBold.font 
         text: "adicionar treinamento"
         onClicked: {
         if(parseInt(inputReps.text) >= 1 && parseInt(inputReps.text) <=100){
@@ -777,7 +788,7 @@ Popup {
         anchors.bottomMargin: dp(50)
         Column {
             anchors.top: parent.top
-            anchors.topMargin: dp(20)
+            anchors.topMargin: dp(40)
             width: parent.width
 
             Repeater {
@@ -786,30 +797,30 @@ Popup {
 
                 delegate: Item {
                     width: parent.width
-                    height: dp(50)
+                    height: dp(70)
 
                     AppTextField {
                         id: irmao
-                        width: parent.width / 2.5
+                        width: parent.width / 2.3
                         placeholderColor: "gray"
-                        height: dp(20)
+                        height: dp(30)
                         textColor: "white"
                         underlineColor: "white"
-                        placeholderText: "tempo em minutos"
+                        placeholderText: "quantos minutos"
                         font: roboto.font
                     }
 
                     AppSwitch {
                         width: parent.width / 7
                         anchors.left: irmao.right
-                        height: dp(20)
+                        height: dp(30)
                         id: trocar
                         onToggled: {
                             if (trocar.checked) {
-                                irmao.placeholderText = "distancia em metros"
+                                irmao.placeholderText = "quantos metros"
                                 combo.visible = false
                             } else {
-                                irmao.placeholderText = "tempo em minutos"
+                                irmao.placeholderText = "quantos minutos"
                                 combo.visible = true
                             }
                         }
@@ -817,10 +828,11 @@ Popup {
 
                     ComboBox {
                         id: combo
-                        width: parent.width / 3.5
+                        width: parent.width / 3
                         model: ["rápido", "moderado", "lento"]
                         visible: true
-                        height: dp(20)
+                        height: dp(30)
+                        font.pixelSize: 15
                         anchors.right: parent.right
                         anchors.top: irmao.top
                     }
@@ -834,6 +846,7 @@ Popup {
         width: parent.width
         height: dp(40)
         radius: dp(20)
+        fontFamily: robotoBold.font 
         text: "Salvar e selecionar"
         backgroundColor: "gray"
         onClicked: {
