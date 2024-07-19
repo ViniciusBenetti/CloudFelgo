@@ -11,7 +11,7 @@ App {
 
       MediaPlayer{
           audioOutput: AudioOutput {}
-          source: "../assets/sounds/popcorn.wav"
+          source: "../sounds/popcorn.wav"
           id: beep
           
     }
@@ -36,20 +36,20 @@ App {
   
     FontLoader {
         id: roboto
-        source: "../assets/fonts/Roboto-Regular.ttf"
+        source: "../fonts/Roboto-Regular.ttf"
     }
     FontLoader {
         id: robotoBold
-        source: "../assets/fonts/Roboto-Bold.ttf"
+        source: "../fonts/Roboto-Bold.ttf"
     }
 
     FontLoader {
         id: brasil
-        source: "../assets/fonts/PlaywriteBR-Regular.ttf"
+        source: "../fonts/PlaywriteBR-Regular.ttf"
     }
     FontLoader {
         id: franca
-        source: "../assets/fonts/PlaywriteFRModerne-Light.ttf"
+        source: "../fonts/PlaywriteFRModerne-Light.ttf"
     }
 
 
@@ -355,16 +355,16 @@ App {
             }else{
               if(repsParse[repIndex].includes("rápido")){
                   map.distanciaZerar = map.distanciaTotal
-                  ativo.text = parseInt(repsParse[repIndex]) + " min ritmo  rápido"
+                  ativo.text = parseFloat(repsParse[repIndex]) + " min ritmo  rápido"
                 }else if(repsParse[repIndex].includes("moderado")){
                   map.distanciaZerar = map.distanciaTotal
-                  ativo.text = parseInt(repsParse[repIndex]) + " min ritmo moderado"
+                  ativo.text = parseFloat(repsParse[repIndex]) + " min ritmo moderado"
                 }else if(repsParse[repIndex].includes("lento")){
                    map.distanciaZerar = map.distanciaTotal
-                   ativo.text = parseInt(repsParse[repIndex]) + " min ritmo lento"
+                   ativo.text = parseFloat(repsParse[repIndex]) + " min ritmo lento"
 
                 }
-              if(parseInt(repsParse[repIndex]) <= tempoTotal){
+              if(parseFloat(repsParse[repIndex]) <= tempoTotal){
               tempoTotal = 0
               repIndex++
               firstIndex = 0
@@ -376,8 +376,8 @@ App {
 
                if(repsParse[repIndex].includes("rápido")){
                   map.distanciaZerar = map.distanciaTotal
-                  ativo.text = parseInt(repsParse[repIndex]) + " min ritmo rápido"           
-                  if(parseInt(repsParse[repIndex]) <= tempoTotal){
+                  ativo.text = parseFloat(repsParse[repIndex]) + " min ritmo rápido"           
+                  if(parseFloat(repsParse[repIndex]) <= tempoTotal){
                   tempoTotal = 0
                   repIndex++
                   beep.play()
@@ -385,8 +385,8 @@ App {
                   }
                 }else if(repsParse[repIndex].includes("moderado")){
                   map.distanciaZerar = map.distanciaTotal
-                  ativo.text = parseInt(repsParse[repIndex]) + " min ritmo moderado"         
-                  if(parseInt(repsParse[repIndex]) <= tempoTotal){
+                  ativo.text = parseFloat(repsParse[repIndex]) + " min ritmo moderado"         
+                  if(parseFloat(repsParse[repIndex]) <= tempoTotal){
                   tempoTotal = 0
                   repIndex++
                   beep.play()
@@ -394,8 +394,8 @@ App {
                 }else if(repsParse[repIndex].includes("lento")){
                   
                   map.distanciaZerar = map.distanciaTotal
-                  ativo.text = parseInt(repsParse[repIndex]) + " min ritmo lento"
-                  if(parseInt(repsParse[repIndex]) <= tempoTotal){
+                  ativo.text = parseFloat(repsParse[repIndex]) + " min ritmo lento"
+                  if(parseFloat(repsParse[repIndex]) <= tempoTotal){
                   tempoTotal = 0
                   repIndex++
                   beep.play()
@@ -865,7 +865,7 @@ Popup {
 
                 console.log("Item " + i + ": irmao =", irmaoValue, "trocar =", trocarValue, "combo =", comboValue);
             if(trocarValue == false){
-              if(parseInt(irmaoValue)){
+              if(parseFloat(irmaoValue)){
                 salvarDados.push(irmaoValue+comboValue)
 
               }
