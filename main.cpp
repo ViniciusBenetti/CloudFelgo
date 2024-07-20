@@ -1,6 +1,5 @@
-#include <QApplication>
+#include <QCoreApplication>
 #include <FelgoApplication>
-
 #include <QQmlApplicationEngine>
 
 // uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
@@ -9,7 +8,7 @@
 int main(int argc, char *argv[])
 {
 
-  QApplication app(argc, argv);
+  QCoreApplication app(argc, argv);
 
   FelgoApplication felgo;
 
