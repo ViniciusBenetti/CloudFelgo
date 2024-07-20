@@ -278,7 +278,7 @@ App {
       
     Timer {
         property int repIndex
-        property int tempoTotal
+        property float tempoTotal
         property int firstIndex:0
         id: timer
         interval: 1000; running:false; repeat: true
