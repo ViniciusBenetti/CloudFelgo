@@ -1,4 +1,4 @@
-#include <QCoreApplication>
+#include <QApplication>
 #include <FelgoApplication>
 #include <QQmlApplicationEngine>
 
@@ -8,7 +8,7 @@
 int main(int argc, char *argv[])
 {
 
-  QCoreApplication app(argc, argv);
+  QApplication app(argc, argv);
 
   FelgoApplication felgo;
 
