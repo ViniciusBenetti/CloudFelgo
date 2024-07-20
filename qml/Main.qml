@@ -422,10 +422,10 @@ App {
             ativo.text = "treino livre"
           }
           segundos++
+          tempoTotal+= 0.016
           if(segundos >=60){
             segundos = 0
             minutos++
-            tempoTotal++
           }
           if(minutos >=60){
             minutos = 0
