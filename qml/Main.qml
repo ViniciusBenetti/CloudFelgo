@@ -36,20 +36,20 @@ App {
   
     FontLoader {
         id: roboto
-        source: "../fonts/Roboto-Regular.ttf"
+        source: "../assets/fonts/Roboto-Regular.ttf"
     }
     FontLoader {
         id: robotoBold
-        source: "../fonts/Roboto-Bold.ttf"
+        source: "../assets/fonts/Roboto-Bold.ttf"
     }
 
     FontLoader {
         id: brasil
-        source: "../fonts/PlaywriteBR-Regular.ttf"
+        source: "../assets/fonts/PlaywriteBR-Regular.ttf"
     }
     FontLoader {
         id: franca
-        source: "../fonts/PlaywriteFRModerne-Light.ttf"
+        source: "../assets/fonts/PlaywriteFRModerne-Light.ttf"
     }
 
 
