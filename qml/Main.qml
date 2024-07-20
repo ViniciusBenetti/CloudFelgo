@@ -11,7 +11,7 @@ App {
 
       MediaPlayer{
           audioOutput: AudioOutput {}
-          source: "../sounds/popcorn.wav"
+          source: "../assets/sounds/popcorn.wav"
           id: beep
           
     }
