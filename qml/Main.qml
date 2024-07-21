@@ -15,6 +15,15 @@ App {
           id: beep
           
     }
+    NotificationManager{
+    id:notificacao
+   }
+
+    Notification{
+     id:mensagem
+     message: "timer iniciado"
+     timeInterval: 3
+    }
 
 
     Storage {
@@ -491,7 +500,7 @@ App {
       visible: false
       scale: 2
       onClicked:{
-
+        notificacao.scheduleNotification(mensagem)
         beep.play()
         timer.running = true
         if(stopRep.visible = false){
@@ -615,7 +624,7 @@ App {
       backgroundColorPressed: "light blue"
       fontFamily: robotoBold.font 
       onClicked: {
-
+        notificacao.scheduleNotification(mensagem)
         beep.play()
         pauseRep.visible = true 
         stopRep.visible = true
