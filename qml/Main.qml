@@ -15,9 +15,6 @@ App {
           id: beep
           
     }
-    NotificationManager{
-    id:notificacao
-   }
 
     Notification{
      id:mensagem
