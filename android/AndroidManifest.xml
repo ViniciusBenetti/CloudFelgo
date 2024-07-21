@@ -25,19 +25,6 @@
             <meta-data android:name="android.app.extract_android_style" android:value="minimal"/>
         </activity>
 
-        <!-- file provider needed for letting external apps (like camera) write to a file of the app -->
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
-        </provider>
-
-
     </application>
     
     <supports-screens android:largeScreens="true" android:normalScreens="true" android:anyDensity="true" android:smallScreens="true"/>
