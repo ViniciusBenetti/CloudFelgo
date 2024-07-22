@@ -16,6 +16,7 @@ App {
           
     }
 
+
     Storage {
         id: storage
 
@@ -30,6 +31,11 @@ App {
             }
         }
     }
+    WorkerScript{
+    id: newThread
+    source: "./worker.mjs"
+
+   }
 
 
   
