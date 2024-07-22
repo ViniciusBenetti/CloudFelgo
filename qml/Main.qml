@@ -498,6 +498,7 @@ App {
       onClicked:{
       
         beep.play()
+        newThread.sendMessage("comecar")
         timer.running = true
         if(stopRep.visible = false){
         var horariosInicio = storage.getValue("horarios-inicio")
@@ -512,12 +513,14 @@ App {
         horariosParse.push(horarioFormatado);
         storage.setValue("horarios-inicio",JSON.stringify(horariosParse))
 
-        }
+        }else{
+        map.coordinates = []
+        map.distanciaTotal = 0
+       }
        
         pauseRep.visible = true
         stopRep.visible = true
-        map.coordinates = []
-        map.distanciaTotal = 0
+        
         resumeRep.visible = false
         map.lon1 = map.userPosition.coordinate.longitude
         map.lat1 = map.userPosition.coordinate.latitude 
