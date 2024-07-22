@@ -31,11 +31,6 @@ App {
             }
         }
     }
-    WorkerScript{
-    id: newThread
-    source: "./worker.mjs"
-
-   }
 
 
   
@@ -498,7 +493,6 @@ App {
       onClicked:{
       
         beep.play()
-        newThread.sendMessage("comecar")
         timer.running = true
         if(stopRep.visible = false){
         var horariosInicio = storage.getValue("horarios-inicio")
