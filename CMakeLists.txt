@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Felgo REQUIRED)
 
-set(PRODUCT_IDENTIFIER "com.vinix.runApp")
+set(PRODUCT_IDENTIFIER "com.vinix.runapp")
 set(PRODUCT_VERSION_NAME "1.0.0")
 set(PRODUCT_VERSION_CODE 1)
 
