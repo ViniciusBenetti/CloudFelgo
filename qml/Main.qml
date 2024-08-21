@@ -17,6 +17,7 @@ App {
     }
 
 
+
     Storage {
         id: storage
 
@@ -280,6 +281,7 @@ App {
         property int repIndex
         property double tempoTotal
         property int firstIndex:0
+        property int contador:0
         id: timer
         interval: 1000; running:false; repeat: true
         onTriggered:{
@@ -288,7 +290,7 @@ App {
           var horas = time.text.substring(0,2)
           var minutos = time.text.substring(3,5)
           var segundos = time.text.substring(6,8)
-          var paceStatus = 0
+          var paceStatus = parseFloat(pace.text)
 
           var savedReps = storage.getValue("listaRpModelo")
           if(savedReps !== undefined){
@@ -324,7 +326,7 @@ App {
               time.text = "00:00:00"
               distance.text = "0m"
               ativo.text = ""
-              pace.text = ""
+              pace.text = "0 min/km"
               map.lon1 = 0 
               map.lat1 = 0
               pauseRep.visible = false
@@ -432,7 +434,11 @@ App {
             horas++
 
           }
-          paceStatus = ((segundos / 60) + (minutos) + (horas * 60)) /  (map.distanciaTotal / 1000)
+          
+          paceStatus += ((segundos / 60) + (minutos) + (horas * 60)) /  (map.distanciaTotal / 1000)
+          if(contador == 5){
+            paceStatus /=5
+          }
           if(horas < 10){
           horas = horas.toString().padStart(2, '0')
           }
@@ -443,10 +449,16 @@ App {
           segundos = segundos.toString().padStart(2, '0')
           }
       
-          if(paceStatus >=2 && paceStatus <=100){
+          if(paceStatus >=2 && paceStatus <=100 && contador == 5){
             pace.text = paceStatus.toFixed(2)+ " min/km"
-          }else{
+            
+          }if(paceStatus < 2 && paceStatus > 100 && contador == 5 || (paceStatus == Infinity && contador == 5) || (paceStatus == NaN && contador == 5)){
             pace.text = "0 min/km"
+            paceStatus = 0
+          }
+          if(contador == 5){
+            paceStatus = 0
+            contador = 0
           }
           time.text = horas+":"+minutos+":"+segundos
 
@@ -456,7 +468,7 @@ App {
     AppText{
       scale: 1.8 
       id: pace 
-      text: "" 
+      text: "0 min/km" 
       color:"black"
       font: robotoBold.font
       anchors.horizontalCenter: parent.horizontalCenter
@@ -491,8 +503,8 @@ App {
       visible: false
       scale: 2
       onClicked:{
-      
-        beep.play()
+
+
         timer.running = true
         if(stopRep.visible = false){
         var horariosInicio = storage.getValue("horarios-inicio")
@@ -508,13 +520,13 @@ App {
         storage.setValue("horarios-inicio",JSON.stringify(horariosParse))
 
         }else{
-        map.coordinates = []
-        map.distanciaTotal = 0
-       }
+         map.coordinates = []
+         map.distanciaTotal = 0
+        }
        
         pauseRep.visible = true
         stopRep.visible = true
-        
+
         resumeRep.visible = false
         map.lon1 = map.userPosition.coordinate.longitude
         map.lat1 = map.userPosition.coordinate.latitude 
@@ -595,7 +607,7 @@ App {
               time.text = "00:00:00"
               distance.text = "0m"
               ativo.text = ""
-              pace.text = ""
+              pace.text = "0 min/km"
               map.lon1 = 0 
               map.lat1 = 0
 
@@ -617,7 +629,7 @@ App {
       backgroundColorPressed: "light blue"
       fontFamily: robotoBold.font 
       onClicked: {
-      
+
         beep.play()
         pauseRep.visible = true 
         stopRep.visible = true
